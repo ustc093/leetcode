@@ -1,16 +1,81 @@
 package sort
 
 import (
+	"github.com/leetcode/util"
 	"github.com/stretchr/testify/assert"
+	"sort"
 	"testing"
 )
 
 var (
-	arr     = []int{4, 3, 5, 1, 3, 5, 6, 8}
-	sortArr = []int{1, 3, 3, 4, 5, 5, 6, 8}
+	maxDiff     = 300000
+	maxInt      = 100
+	arrayLength = 30
 )
 
 func TestSelectSort(t *testing.T) {
-	SelectSort(arr)
-	assert.Equal(t, arr, sortArr)
+	for i := 0; i < maxDiff; i++ {
+		arr := util.GenRandomArray(arrayLength, maxInt)
+		sortArr := make([]int, len(arr))
+		copy(sortArr, arr)
+		SelectSort(arr)
+		sort.Ints(sortArr)
+		assert.Equal(t, sortArr, arr)
+	}
+}
+
+func TestInsertSort(t *testing.T) {
+	for i := 0; i < maxDiff; i++ {
+		arr := util.GenRandomArray(arrayLength, maxInt)
+		sortArr := make([]int, len(arr))
+		copy(sortArr, arr)
+		InsertSort(arr)
+		sort.Ints(sortArr)
+		assert.Equal(t, sortArr, arr)
+	}
+}
+
+
+func TestBubbleSort(t *testing.T) {
+	for i := 0; i < maxDiff; i++ {
+		arr := util.GenRandomArray(arrayLength, maxInt)
+		sortArr := make([]int, len(arr))
+		copy(sortArr, arr)
+		BubbleSort(arr)
+		sort.Ints(sortArr)
+		assert.Equal(t, sortArr, arr)
+	}
+}
+
+func TestMergeSort(t *testing.T) {
+	for i := 0; i < maxDiff; i++ {
+		arr := util.GenRandomArray(arrayLength, maxInt)
+		sortArr := make([]int, len(arr))
+		copy(sortArr, arr)
+		arr = MergeSort(arr)
+		sort.Ints(sortArr)
+		assert.Equal(t, sortArr, arr)
+	}
+}
+
+func TestMergeSort2(t *testing.T) {
+	for i := 0; i < maxDiff; i++ {
+		arr := util.GenRandomArray(arrayLength, maxInt)
+		sortArr := make([]int, len(arr))
+		copy(sortArr, arr)
+		MergeSort2(arr)
+		sort.Ints(sortArr)
+		assert.Equal(t, sortArr, arr)
+	}
+}
+
+func TestQuickSort(t *testing.T) {
+	for i := 0; i < maxDiff; i++ {
+		arr := util.GenRandomArray(5, maxInt)
+		sortArr := make([]int, len(arr))
+		copy(sortArr, arr)
+		QuickSort(arr)
+		sort.Ints(sortArr)
+		assert.Equal(t, sortArr, arr)
+	}
 }

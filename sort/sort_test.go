@@ -35,7 +35,6 @@ func TestInsertSort(t *testing.T) {
 	}
 }
 
-
 func TestBubbleSort(t *testing.T) {
 	for i := 0; i < maxDiff; i++ {
 		arr := util.GenRandomArray(arrayLength, maxInt)
@@ -75,6 +74,17 @@ func TestQuickSort(t *testing.T) {
 		sortArr := make([]int, len(arr))
 		copy(sortArr, arr)
 		QuickSort(arr)
+		sort.Ints(sortArr)
+		assert.Equal(t, sortArr, arr)
+	}
+}
+
+func TestHeapSort(t *testing.T) {
+	for i := 0; i < maxDiff; i++ {
+		arr := util.GenRandomArray(5, maxInt)
+		sortArr := make([]int, len(arr))
+		copy(sortArr, arr)
+		HeapSort(arr)
 		sort.Ints(sortArr)
 		assert.Equal(t, sortArr, arr)
 	}

@@ -70,7 +70,7 @@ func TestMergeSort2(t *testing.T) {
 
 func TestQuickSort(t *testing.T) {
 	for i := 0; i < maxDiff; i++ {
-		arr := util.GenRandomArray(5, maxInt)
+		arr := util.GenRandomArray(arrayLength, maxInt)
 		sortArr := make([]int, len(arr))
 		copy(sortArr, arr)
 		QuickSort(arr)
@@ -81,7 +81,7 @@ func TestQuickSort(t *testing.T) {
 
 func TestHeapSort(t *testing.T) {
 	for i := 0; i < maxDiff; i++ {
-		arr := util.GenRandomArray(5, maxInt)
+		arr := util.GenRandomArray(arrayLength, maxInt)
 		sortArr := make([]int, len(arr))
 		copy(sortArr, arr)
 		HeapSort(arr)

@@ -89,3 +89,15 @@ func TestHeapSort(t *testing.T) {
 		assert.Equal(t, sortArr, arr)
 	}
 }
+
+
+func TestRadixSort(t *testing.T) {
+	for i := 0; i < maxDiff; i++ {
+		arr := util.GenRandomArray(arrayLength, maxInt)
+		sortArr := make([]int, len(arr))
+		copy(sortArr, arr)
+		RadixSort(arr)
+		sort.Ints(sortArr)
+		assert.Equal(t, sortArr, arr)
+	}
+}

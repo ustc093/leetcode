@@ -14,10 +14,10 @@ func QuickSort(arr []int) {
 func helperQuickSort(arr []int) int {
 
 	flag := arr[0]
-	i := 1
+	i := 0
 	j := len(arr) - 1
 	for ; i <= j; {
-		if flag > arr[i] {
+		if flag >= arr[i] {
 			i++
 			continue
 		}

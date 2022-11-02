@@ -22,7 +22,7 @@ func DetectCycle(head *ListNode) *ListNode {
 		slow = slow.Next
 		if fast == slow {
 			isCycle = true
-			break;
+			break
 		}
 	}
 

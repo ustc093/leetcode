@@ -7,7 +7,7 @@ package linked_list
  * 不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
  */
 
-func ReorderList(head *ListNode)  {
+func ReorderList(head *ListNode) {
 	if head == nil {
 		return
 	}
@@ -27,7 +27,7 @@ func ReorderList(head *ListNode)  {
 	res := pre
 	n := len(nodeMap)
 
-	for ; i < (n+1)/2; i++{
+	for ; i < (n+1)/2; i++ {
 		pre.Next = nodeMap[i]
 		pre = pre.Next
 		if i >= n {
@@ -38,4 +38,38 @@ func ReorderList(head *ListNode)  {
 	}
 	pre.Next = nil
 	head = res.Next
+}
+
+func ReorderListII(head *ListNode) {
+	if head == nil {
+		return
+	}
+	// 找到mid
+	fast := head
+	mid := head
+	for ; fast != nil && fast.Next != nil; {
+		fast = fast.Next.Next
+		mid = mid.Next
+	}
+
+	// reverse
+	var pre  *ListNode
+	for ;mid != nil; {
+		tmp := mid.Next
+		mid.Next = pre
+		pre = mid
+		mid = tmp
+	}
+
+	// merge pre && head
+	curr := head
+	for ;curr.Next != nil && pre != nil; {
+		currNext := curr.Next
+		preNext := pre.Next
+		curr.Next = pre
+		pre.Next = currNext
+		curr = currNext
+		pre = preNext
+	}
+
 }

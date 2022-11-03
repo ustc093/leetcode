@@ -8,6 +8,9 @@ import (
 func TestReorderList(t *testing.T) {
 	head := genLinkedList([]int{1,2,3,4})
 	ReorderList(head)
+
+	head = genLinkedList([]int{1,2,3,4})
+	ReorderListII(head)
 }
 
 func TestIsPalindrome(t *testing.T) {

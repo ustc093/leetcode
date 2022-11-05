@@ -19,6 +19,7 @@ func HeapSort(arr []int) {
 	}
 }
 
+// 插入堆
 func heapInsert(arr []int, index int) {
 	parent := (index - 1) / 2
 	for ; arr[parent] < arr[index]; {
@@ -27,11 +28,17 @@ func heapInsert(arr []int, index int) {
 		parent = (index - 1) / 2
 	}
 }
-
+/*
+ * left := parent * 2 + 1
+ * right := parent * 2 + 2
+ * parent := (left/right - 1) / 2
+ */
 func adjustHeap(arr []int, parent, n int) {
 	leftChild := parent*2 + 1
 	for ; leftChild < n; {
 		largest := leftChild
+
+		// 如果有右孩子 && 右孩子 > 左孩子
 		if leftChild+1 < n && arr[leftChild] < arr[leftChild+1] {
 			largest = leftChild + 1
 		}

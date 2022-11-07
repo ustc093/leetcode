@@ -40,6 +40,11 @@ func TestPostOrderTraversal(t *testing.T) {
 
 }
 
+func TestLevelOrder(t *testing.T) {
+	root := genBinaryTree(originArr, 0)
+	res := LevelOrder(root)
+	print(res)
+}
 
 
 func genBinaryTree(arr []int, index int) *TreeNode {

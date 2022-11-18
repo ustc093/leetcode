@@ -13,6 +13,7 @@ var (
 
 	searchBinaryTree     = []int{6, 5, 10, 4, 0, 7, 11}
 	notBalanceBinaryTree = []int{6, 5, 3, 4, 0, 0, 0, 1}
+	fullBinaryTree       = []int{1, 2, 3, 4, 5, 6, 7}
 )
 
 func TestPreOrderTraversal(t *testing.T) {
@@ -85,6 +86,45 @@ func TestJudgeBalanceBinaryTree(t *testing.T) {
 	root = genBinaryTree(notBalanceBinaryTree, 0)
 	res = JudgeCompleteBinaryTree(root)
 	assert.False(t, res)
+}
+
+func TestJudgeFullBinaryTree(t *testing.T) {
+	root := genBinaryTree(originArr, 0)
+	res := JudgeFullBinaryTree(root)
+	assert.False(t, res)
+
+	root = genBinaryTree(fullBinaryTree, 0)
+	res = JudgeFullBinaryTree(root)
+	assert.True(t, res)
+}
+
+func TestGetLCANode(t *testing.T) {
+	root := genBinaryTree(originArr, 0)
+	res := LowestCommonAncestor(root, root.Left, root.Right)
+	assert.Equal(t, root, res)
+
+	root = genBinaryTree(originArr, 0)
+	res = LowestCommonAncestor(root, root.Left, root.Left.Left)
+	assert.Equal(t, root.Left, res)
+
+	root = genBinaryTree(originArr, 0)
+	res = LowestCommonAncestor(root, root.Left.Right, root.Left.Left)
+	assert.Equal(t, root.Left, res)
+
+	root = genBinaryTree(originArr, 0)
+	res = LowestCommonAncestor(root, root, root.Left.Left)
+	assert.Equal(t, root, res)
+}
+
+func TestInorderSuccessor(t *testing.T) {
+	root := genBinaryTree(originArr, 0)
+	res := InorderSuccessor(root, root.Left)
+	assert.Equal(t, root.Left.Right, res)
+
+	root = genBinaryTree(originArr, 0)
+	res = InorderSuccessor(root, root.Left.Left)
+	assert.Equal(t, root.Left, res)
+
 }
 
 func genBinaryTree(arr []int, index int) *TreeNode {

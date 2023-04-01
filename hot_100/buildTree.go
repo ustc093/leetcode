@@ -22,6 +22,7 @@ Output: [-1]
 链接：https://leetcode.cn/problems/zhong-jian-er-cha-shu-lcof
 */
 
+// 思路找到root节点，把preorder 和 inorder 分为left、right，递归调用
 func buildTree(preorder []int, inorder []int) *TreeNode {
 	if len(preorder) == 0 || len(preorder) != len(inorder) {
 		return nil

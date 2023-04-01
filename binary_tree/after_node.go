@@ -2,6 +2,9 @@ package binary_tree
 
 import "container/list"
 
+// InorderSuccessor
+// 题目给定一个二叉搜索树的根节点root和树中的某一个节点node，要求出节点node的中序遍历的后继Successor
+// 所谓后继就是树所有值大于p节点值的节点中值最小的那个节点。如果后继不存在就返回空节点。
 func InorderSuccessor(root, node *TreeNode) *TreeNode {
 	if root == nil {
 		return nil

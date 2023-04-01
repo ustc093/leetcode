@@ -19,3 +19,26 @@ func reverseList(head *ListNode) *ListNode {
 	}
 	return pre
 }
+
+func reverseListKII(head *ListNode, k int) *ListNode {
+	if head == nil {
+		return head
+	}
+	count := 0
+	var pre *ListNode
+	last := head
+
+	// judge length
+
+	// reverse Kth list
+	for count < k && head != nil {
+		tmp := head.Next
+		head.Next = pre
+		pre = head
+		head = tmp
+		count++
+	}
+	last.Next = reverseListKII(head, k)
+
+	return pre
+}

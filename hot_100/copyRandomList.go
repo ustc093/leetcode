@@ -49,3 +49,23 @@ func copyRandomList(head *Node) *Node {
 
 	return originNewNodeMap[head]
 }
+
+func copyRandomListII(head *Node) *Node {
+	if head == nil {
+		return head
+	}
+
+	curr := head
+	originNewNodeMap := make(map[*Node]*Node)
+	for ; curr != nil; curr = curr.Next {
+		originNewNodeMap[curr] = &Node{Val: curr.Val}
+	}
+
+	curr = head
+	for ; curr != nil; curr = curr.Next {
+		originNewNodeMap[curr].Random = originNewNodeMap[curr.Random]
+		originNewNodeMap[curr].Next = originNewNodeMap[curr.Next]
+	}
+
+	return originNewNodeMap[head]
+}
